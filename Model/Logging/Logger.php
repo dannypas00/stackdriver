@@ -54,8 +54,8 @@ class Logger extends Monolog implements
      */
     public function __construct(
         string $name,
-        array $handlers = [],
-        array $processors = [],
+        array $handlers,
+        array $processors,
         LocalizedScopeDeploymentConfigInterfaceFactory $deploymentConfigFactory,
         StackdriverIntegrationInterface $stackdriver
     ) {
