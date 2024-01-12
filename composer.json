@@ -1,5 +1,5 @@
 {
-  "name": "auroraextensions/stackdriver",
+  "name": "dannypas00/magento-stackdriver",
   "description": "Stackdriver integration for Magento.",
   "type": "magento2-module",
   "license": "MIT",
@@ -13,7 +13,7 @@
     "email": "support@auroraextensions.com"
   },
   "require": {
-    "php": "^7.2||^8.0",
+    "php": "^7.2||^8.*",
     "psr/log": "~1.1",
     "monolog/monolog": "^1.17",
     "magento/framework": "*",
