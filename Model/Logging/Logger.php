@@ -25,6 +25,7 @@ use AuroraExtensions\Stackdriver\Api\ReportedErrorEventMetadataProviderInterface
 use AuroraExtensions\Stackdriver\Api\StackdriverAwareLoggerInterface;
 use AuroraExtensions\Stackdriver\Api\StackdriverIntegrationInterface;
 use Google\Cloud\Logging\Logger as GoogleCloudLogger;
+use Monolog\DateTimeImmutable;
 use Monolog\Logger as Monolog;
 use Psr\Log\InvalidArgumentException;
 use Psr\Log\LoggerInterface;
@@ -101,15 +102,17 @@ class Logger extends Monolog implements
     }
 
     /**
-     * @param int|string $level
-     * @param string|Exception $message
+     * @param int $level
+     * @param string $message
      * @param array $context
+     * @param DateTimeImmutable|null $datetime
      * @return bool
      */
     public function addRecord(
-        $level,
-        $message,
-        array $context = []
+        int $level,
+        string $message,
+        array $context = [],
+        DateTimeImmutable $datetime = null
     ): bool {
         /** @var bool $isLoggingEnabled */
         $isLoggingEnabled = !$this->deploymentConfig->get('logging/disabled');
@@ -152,7 +155,7 @@ class Logger extends Monolog implements
                     );
                 } catch (InvalidArgumentException | Exception $e) {
                     parent::addRecord(
-                        LogLevel::ERROR,
+                        Monolog::ERROR,
                         $e->getMessage(),
                         ['exception' => $e]
                     );

@@ -13,7 +13,7 @@
     "email": "support@auroraextensions.com"
   },
   "require": {
-    "php": "7.*||8.*",
+    "php": "8.*",
     "psr/log": "~1.1",
     "monolog/monolog": "^1.17||2.*",
     "magento/framework": "*",
@@ -22,12 +22,27 @@
     "google/cloud-error-reporting": "^0.22",
     "auroraextensions/modulecomponents": "^100||^101"
   },
+  "repositories": [
+    {
+      "type": "composer",
+      "url": "https://repo.packagist.com/elgentos/fotocadeau/"
+    },
+    {
+      "type": "composer",
+      "url": "https://repo.packagist.org/"
+    }
+  ],
   "autoload": {
     "files": [
       "registration.php"
     ],
     "psr-4": {
       "AuroraExtensions\\Stackdriver\\": ""
+    }
+  },
+  "config": {
+    "allow-plugins": {
+      "magento/composer-dependency-version-audit-plugin": true
     }
   }
 }

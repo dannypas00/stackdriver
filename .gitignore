@@ -1,2 +1,4 @@
 .idea
 *.sw[po]
+vendor/
+composer.lock
