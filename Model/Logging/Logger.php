@@ -54,11 +54,11 @@ class Logger extends Monolog implements
      * @return void
      */
     public function __construct(
-        string $name,
-        array $handlers,
-        array $processors,
         LocalizedScopeDeploymentConfigInterfaceFactory $deploymentConfigFactory,
-        StackdriverIntegrationInterface $stackdriver
+        StackdriverIntegrationInterface $stackdriver,
+        string $name,
+        array $handlers = [],
+        array $processors = [],
     ) {
         parent::__construct(
             $name,
